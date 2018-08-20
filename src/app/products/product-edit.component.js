@@ -20,8 +20,11 @@ var ProductEditComponent = (function () {
         this.pageTitle = 'Product Edit';
     }
     ProductEditComponent.prototype.ngOnInit = function () {
-        var id = +this.route.snapshot.params['id'];
-        this.getProduct(id);
+        var _this = this;
+        this.route.params.subscribe(function (params) {
+            var id = +params['id'];
+            _this.getProduct(id);
+        });
     };
     ProductEditComponent.prototype.getProduct = function (id) {
         var _this = this;
