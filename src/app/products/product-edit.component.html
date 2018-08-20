@@ -20,7 +20,8 @@
                         <button class="btn btn-primary"
                                 type="button"
                                 style="width: 80ps; margin-right: 10px"
-                                (click)="saveProduct()">
+                                (click)="saveProduct()"
+                                [disabled]="!isValid()">
                             Save
                         </button>
                     </span>
