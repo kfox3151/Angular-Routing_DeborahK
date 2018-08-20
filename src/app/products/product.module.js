@@ -26,30 +26,27 @@ ProductModule = __decorate([
         imports: [
             shared_module_1.SharedModule,
             router_1.RouterModule.forChild([
-                { path: 'products', component: product_list_component_1.ProductListComponent },
-                { path: 'products/:id',
-                    component: product_detail_component_1.ProductDetailComponent,
-                    resolve: { product: product_resolver_service_1.ProductResolver }
-                },
-                { path: 'products/:id/edit',
-                    component: product_edit_component_1.ProductEditComponent,
-                    resolve: { product: product_resolver_service_1.ProductResolver },
+                { path: 'products',
                     children: [
                         {
-                            path: '',
-                            redirectTo: 'info',
-                            pathMatch: 'full'
+                            path: '', component: product_list_component_1.ProductListComponent
                         },
                         {
-                            path: 'info',
-                            component: product_edit_info_component_1.ProductEditInfoComponent
+                            path: ':id',
+                            component: product_detail_component_1.ProductDetailComponent,
+                            resolve: { product: product_resolver_service_1.ProductResolver }
                         },
                         {
-                            path: 'tags',
-                            component: product_edit_tags_component_1.ProductEditTagsComponent
+                            path: ':id/edit',
+                            component: product_edit_component_1.ProductEditComponent,
+                            resolve: { product: product_resolver_service_1.ProductResolver },
+                            children: [
+                                { path: '', redirectTo: 'info', pathMatch: 'full' },
+                                { path: 'info', component: product_edit_info_component_1.ProductEditInfoComponent },
+                                { path: 'tags', component: product_edit_tags_component_1.ProductEditTagsComponent }
+                            ]
                         }
-                    ]
-                }
+                    ] },
             ])
         ],
         declarations: [
