@@ -8,7 +8,7 @@ import { AuthGuard } from './user/auth-guard.service';
     imports: [
         RouterModule.forRoot([
             { path: 'welcome', component: WelcomeComponent },
-            { path: 'products', canLoad: [ AuthGuard ], loadChildren: 'app/products/product.module#ProductModule' },
+            { path: 'products', canActivate: [ AuthGuard ], loadChildren: 'app/products/product.module#ProductModule' },
             { path: '', redirectTo: 'welcome', pathMatch: 'full' },
             { path: '**', component: PageNotFoundComponent }
           ], { preloadingStrategy: PreloadAllModules })
