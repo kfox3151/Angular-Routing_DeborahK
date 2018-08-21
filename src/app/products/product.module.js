@@ -15,6 +15,7 @@ var product_edit_tags_component_1 = require("./product-edit-tags.component");
 var product_filter_pipe_1 = require("./product-filter.pipe");
 var product_service_1 = require("./product.service");
 var product_resolver_service_1 = require("./product-resolver.service");
+var product_guard_service_1 = require("./product-guard.service");
 var auth_guard_service_1 = require("../user/auth-guard.service");
 var shared_module_1 = require("../shared/shared.module");
 var ProductModule = (function () {
@@ -40,6 +41,7 @@ ProductModule = __decorate([
                         },
                         {
                             path: ':id/edit',
+                            canDeactivate: [product_guard_service_1.ProductEditGuard],
                             component: product_edit_component_1.ProductEditComponent,
                             resolve: { product: product_resolver_service_1.ProductResolver },
                             children: [
@@ -61,7 +63,8 @@ ProductModule = __decorate([
         ],
         providers: [
             product_service_1.ProductService,
-            product_resolver_service_1.ProductResolver
+            product_resolver_service_1.ProductResolver,
+            product_guard_service_1.ProductEditGuard
         ]
     })
 ], ProductModule);
