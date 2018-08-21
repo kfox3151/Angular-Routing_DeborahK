@@ -23,7 +23,7 @@ AppRoutingModule = __decorate([
                 { path: 'products', canLoad: [auth_guard_service_1.AuthGuard], loadChildren: 'app/products/product.module#ProductModule' },
                 { path: '', redirectTo: 'welcome', pathMatch: 'full' },
                 { path: '**', component: page_not_found_component_1.PageNotFoundComponent }
-            ])
+            ], { preloadingStrategy: router_1.PreloadAllModules })
         ],
         exports: [
             router_1.RouterModule
